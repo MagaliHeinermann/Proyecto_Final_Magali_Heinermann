@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Empleado, Producto, Cliente
 from .forms import EmpleadoForm, ProductoForm, ClienteForm
 
+# --- Vista de Inicio ---
+def inicio(request):
+    return render(request, 'inicio.html', {})
+
 # ───────── EMPLEADOS ─────────
 
 def crear_empleado(request):

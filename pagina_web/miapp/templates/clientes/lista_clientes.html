@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h2 class="mb-4">Clientes Registrados</h2>
+
+<a href="/clientes/crear" class="btn btn-success mb-3">+ Crear Cliente</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for c in clientes %}
+        <tr>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.apellido }}</td>
+            <td>{{ c.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% if clientes|length == 0 %}
+<p class="text-muted">No hay clientes cargados.</p>
+{% endif %}
+
+{% endblock %}

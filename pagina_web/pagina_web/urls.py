@@ -14,11 +14,28 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# pagina_web/urls.py
+
 from django.contrib import admin
 from django.urls import path, include
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("miapp.urls")),
-]
+# --- ÚNICA IMPORTACIÓN DE VISTAS REQUERIDA ---
+# Importamos las vistas desde el módulo de tu aplicación 'MiApp'
+from miapp import views as MiApp_views 
 
+urlpatterns = [
+    # Ruta de Inicio (Solución 404)
+    path('', MiApp_views.inicio, name='inicio'), 
+
+    # Admin
+    path('admin/', admin.site.urls),
+    
+    # Rutas de tu aplicación MiApp
+    path('empleados/crear/', MiApp_views.crear_empleado, name='crear_empleado'),
+    path('empleados/lista/', MiApp_views.lista_empleados, name='lista_empleados'),
+    path('productos/crear/', MiApp_views.crear_producto, name='crear_producto'),
+    path('productos/lista/', MiApp_views.lista_productos, name='lista_productos'),
+    path('clientes/crear/', MiApp_views.crear_cliente, name='crear_cliente'),
+    path('clientes/lista/', MiApp_views.lista_clientes, name='lista_clientes'),
+    path('buscar/', MiApp_views.buscar, name='buscar'),
+]

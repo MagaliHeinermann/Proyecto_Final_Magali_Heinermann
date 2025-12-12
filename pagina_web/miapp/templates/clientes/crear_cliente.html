@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h2 class="mb-4">Crear Cliente</h2>
+
+<form action="/clientes/crear" method="POST" class="card p-4 shadow-sm">
+
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" name="nombre" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Apellido</label>
+        <input type="text" name="apellido" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+    <a href="/clientes" class="btn btn-secondary">Cancelar</a>
+
+</form>
+{% endblock %}
