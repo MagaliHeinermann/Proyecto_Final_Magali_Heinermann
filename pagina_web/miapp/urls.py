@@ -19,4 +19,22 @@ urlpatterns = [
 
     # Búsqueda
     path("buscar/", MiApp_views.buscar, name="buscar"),
+
+    # Login
+    path("login/", login_view, name="login"),
+
+    # Logout
+    path("logout/", logout_view, name="logout"),
+
+    # Registro
+    path("registro/", registro, name="registro"),
+
+    #Avatar
+    path("avatar/", agregar_avatar, name="avatar"),
+
+    # Acerca de mi
+    path("acerca/", acerca_de_mi, name="acerca"),
+
+
 ]
+
