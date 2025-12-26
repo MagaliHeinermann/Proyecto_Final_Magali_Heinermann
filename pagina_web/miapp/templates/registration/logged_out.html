@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h2>Sesión cerrada correctamente</h2>
+    <p>Redirigiendo a la página principal...</p>
+    
+    <script>
+        setTimeout(function(){
+            window.location.href = "{% url 'inicio' %}";
+        }, 1000);
+    </script>
+    
+    <a href="{% url 'inicio' %}" class="btn btn-primary">Volver al Inicio manualmente</a>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+    // Este pequeño script redirige al inicio automáticamente al cargar
+    window.location.href = "{% url 'inicio' %}";
+</script>
+
+<div class="container mt-5 text-center">
+    <h2>Has cerrado sesión correctamente.</h2>
+    <p>Redirigiendo al inicio...</p>
+    <a href="{% url 'inicio' %}" class="btn btn-primary">Haga clic aquí si no es redirigido</a>
+</div>
+{% endblock %}

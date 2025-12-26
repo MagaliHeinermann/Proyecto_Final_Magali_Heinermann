@@ -19,23 +19,30 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# --- ÚNICA IMPORTACIÓN DE VISTAS REQUERIDA ---
-# Importamos las vistas desde el módulo de tu aplicación 'MiApp'
-from miapp import views as MiApp_views 
+
+from django.contrib import admin
+from django.urls import path
+from miapp import views
 
 urlpatterns = [
-    # Ruta de Inicio (Solución 404)
-    path('', MiApp_views.inicio, name='inicio'), 
-
-    # Admin
     path('admin/', admin.site.urls),
-    
-    # Rutas de tu aplicación MiApp
-    path('empleados/crear/', MiApp_views.crear_empleado, name='crear_empleado'),
-    path('empleados/lista/', MiApp_views.lista_empleados, name='lista_empleados'),
-    path('productos/crear/', MiApp_views.crear_producto, name='crear_producto'),
-    path('productos/lista/', MiApp_views.lista_productos, name='lista_productos'),
-    path('clientes/crear/', MiApp_views.crear_cliente, name='crear_cliente'),
-    path('clientes/lista/', MiApp_views.lista_clientes, name='lista_clientes'),
-    path('buscar/', MiApp_views.buscar, name='buscar'),
+    path('', views.inicio, name='inicio'),
+    path('acerca/', views.acerca, name='acerca'), 
+    path('empleados/lista/', views.lista_empleados, name='lista_empleados'),
+    path('empleados/crear/', views.crear_empleado, name='crear_empleado'),
+    path('productos/lista/', views.lista_productos, name='lista_productos'),
+    path('productos/crear/', views.crear_producto, name='crear_producto'),
+    path('clientes/lista/', views.lista_clientes, name='lista_clientes'),
+    path('clientes/crear/', views.crear_cliente, name='crear_cliente'),
+    path('buscar/', views.buscar, name='buscar'),
+    path('registro/', views.registro, name='registro'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_manual, name='logout'),
+    path('agregar-avatar/', views.agregar_avatar, name='agregar_avatar'),
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
